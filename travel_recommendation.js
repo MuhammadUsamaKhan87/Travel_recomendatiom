@@ -1,5 +1,4 @@
- // Travel data
-        const travelData = {
+ const travelData = {
             "countries": [
                 {
                     "id": 1,
@@ -94,44 +93,76 @@
 
             let results = [];
 
-            // Search in cities
-            travelData.countries.forEach(country => {
-                country.cities.forEach(city => {
-                    if (city.name.toLowerCase().includes(searchTerm) || 
-                        country.name.toLowerCase().includes(searchTerm)) {
-                        results.push({
-                            type: 'city',
-                            ...city
-                        });
-                    }
-                });
-            });
-
-            // Search in temples
-            travelData.temples.forEach(temple => {
-                if (temple.name.toLowerCase().includes(searchTerm)) {
-                    results.push({
-                        type: 'temple',
-                        ...temple
-                    });
-                }
-            });
-
-            // Search in beaches
-            travelData.beaches.forEach(beach => {
-                if (beach.name.toLowerCase().includes(searchTerm)) {
+            // Check for category searches first
+            if (searchTerm.includes('beach') || searchTerm === 'beaches') {
+                // Show all beaches
+                travelData.beaches.forEach(beach => {
                     results.push({
                         type: 'beach',
                         ...beach
                     });
-                }
-            });
+                });
+            } else if (searchTerm.includes('temple') || searchTerm === 'temples') {
+                // Show all temples
+                travelData.temples.forEach(temple => {
+                    results.push({
+                        type: 'temple',
+                        ...temple
+                    });
+                });
+            } else if (searchTerm.includes('countr') || searchTerm === 'countries' || searchTerm.includes('cit') || searchTerm === 'cities') {
+                // Show all cities
+                travelData.countries.forEach(country => {
+                    country.cities.forEach(city => {
+                        results.push({
+                            type: 'city',
+                            ...city
+                        });
+                    });
+                });
+            } else {
+                // Original search logic for specific destinations
+                
+                // Search in cities
+                travelData.countries.forEach(country => {
+                    country.cities.forEach(city => {
+                        if (city.name.toLowerCase().includes(searchTerm) || 
+                            country.name.toLowerCase().includes(searchTerm)) {
+                            results.push({
+                                type: 'city',
+                                ...city
+                            });
+                        }
+                    });
+                });
+
+                // Search in temples
+                travelData.temples.forEach(temple => {
+                    if (temple.name.toLowerCase().includes(searchTerm)) {
+                        results.push({
+                            type: 'temple',
+                            ...temple
+                        });
+                    }
+                });
+
+                // Search in beaches
+                travelData.beaches.forEach(beach => {
+                    if (beach.name.toLowerCase().includes(searchTerm)) {
+                        results.push({
+                            type: 'beach',
+                            ...beach
+                        });
+                    }
+                });
+            }
 
             // Display results
             resultsSection.classList.add('show');
             
             if (results.length > 0) {
-                resultsText.textContent = `Found ${results.length} destination${results.length > 1 ? 's' : ''} for "${searchTerm}"`;
+                const categoryType = getCategoryType(searchTerm, results);
+                resultsText.textContent = `Found ${results.length} ${categoryType}${results.length > 1 ? 's' : ''} for "${searchTerm}"`;
                 noResults.style.display = 'none';
                 resultsGrid.innerHTML = '';
 
@@ -145,6 +176,19 @@
                 noResults.style.display = 'block';
                 resultsGrid.innerHTML = '';
             }
+        }
+
+        function getCategoryType(searchTerm, results) {
+            if (searchTerm.includes('beach') || searchTerm === 'beaches') {
+                return 'beach';
+            } else if (searchTerm.includes('temple') || searchTerm === 'temples') {
+                return 'temple';
+            } else if (searchTerm.includes('countr') || searchTerm === 'countries' || searchTerm.includes('cit') || searchTerm === 'cities') {
+                return 'city';
+            } else if (results.length > 0) {
+                return 'destination';
+            }
+            return 'result';
         }
 
         function clearSearch() {
