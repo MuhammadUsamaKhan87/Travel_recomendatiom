@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Travel Bloom</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-section h1 {
+            color: #667eea;
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-menu a.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        /* About Hero Section */
+        .about-hero {
+            background: white;
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        /* Company Story Section */
+        .company-story {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .company-story h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .story-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-section h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar-ceo {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .avatar-manager {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        }
+
+        .avatar-guide {
+            background: linear-gradient(45deg, #2ed573, #7bed9f);
+        }
+
+        .avatar-coordinator {
+            background: linear-gradient(45deg, #ffa502, #ff6348);
+        }
+
+        .avatar-specialist {
+            background: linear-gradient(45deg, #5f27cd, #a55eea);
+        }
+
+        .avatar-consultant {
+            background: linear-gradient(45deg, #00d2d3, #54a0ff);
+        }
+
+        .team-card h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-menu ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-hero {
+                padding: 2rem 1rem;
+            }
+
+            .company-story {
+                padding: 2rem 1rem;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .team-section {
+                padding: 2rem 1rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-section h1 {
+                font-size: 1.5rem;
+            }
+
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">TB</div>
+                    <h1>Travel Bloom</h1>
+                </div>
+                <div class="nav-menu">
+                    <ul>
+                        <li><a href="/travel_recommendation.html">Home</a></li>
+                        <li><a href="/about.html" class="active">About</a></li>
+                        <li><a href="/contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- About Hero Section -->
+            <section class="about-hero">
+                <h1>About Travel Bloom</h1>
+                <p>
+                    We are passionate travel enthusiasts dedicated to creating unforgettable journeys that inspire, educate, and transform. 
+                    With years of experience in the travel industry, we specialize in crafting personalized adventures that connect you with 
+                    the world's most extraordinary destinations and cultures.
+                </p>
+            </section>
+
+            <!-- Company Story Section -->
+            <section class="company-story">
+                <h2>Our Story</h2>
+                <div class="story-content">
+                    <div class="story-text">
+                        <p>
+                            Travel Bloom was founded in 2018 with a simple mission: to make extraordinary travel experiences accessible to everyone. 
+                            What started as a small team of adventure seekers has grown into a trusted travel partner for thousands of explorers worldwide.
+                        </p>
+                        <p>
+                            We believe that travel has the power to broaden perspectives, create lasting memories, and foster connections between people 
+                            from different cultures. Our commitment to sustainable tourism and authentic experiences sets us apart in the industry.
+                        </p>
+                        <p>
+                            From breathtaking mountain expeditions to serene beach getaways, cultural immersions to wildlife adventures, 
+                            we curate each journey with meticulous attention to detail and genuine care for our travelers' dreams.
+                        </p>
+                    </div>
+                    <div class="story-image">Our Journey Begins</div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number">15K+</div>
+                    <div class="stat-label">Happy Travelers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Destinations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+            </section>
+
+            <!-- Team Section -->
+            <section class="team-section">
+                <h2>Meet Our Team</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar avatar-ceo">👨‍💼</div>
+                        <h3>Michael Rodriguez</h3>
+                        <div class="team-role">CEO & Founder</div>
+                        <p>With over 15 years in the travel industry, Michael's vision drives Travel Bloom's commitment to exceptional experiences. His passion for exploration and sustainable tourism shapes our company's mission and values.</p>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-avatar avatar-manager">👩‍💼</div>
+                        <h3>Sarah Chen</h3>
+                        <div class="team-role">Operations Manager</div>
+                        <p>Sarah ensures every trip runs smoothly from planning to execution. Her attention to detail and problem-solving skills guarantee that our travelers have seamless and memorable experiences worldwide.</p>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-avatar avatar-guide">🗺️</div>
+                        <h3>David Thompson</h3>
+                        <div class="team-role">Senior Travel Guide</div>
+                        <p>A certified guide with expertise in adventure tourism, David has led expeditions across six continents. His deep knowledge of local cultures and landscapes enriches every journey he accompanies.</p>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-avatar avatar-coordinator">✈️</div>
+                        <h3>Emily Johnson</h3>
+                        <div class="team-role">Trip Coordinator</div>
+                        <p>Emily specializes in creating custom itineraries that match each traveler's unique interests and budget. Her creativity and organizational skills turn dream destinations into perfectly planned adventures.</p>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-avatar avatar-specialist">🌍</div>
+                        <h3>James Wilson</h3>
+                        <div class="team-role">Cultural Specialist</div>
+                        <p>James brings deep cultural insights to every destination we offer. His background in anthropology and years of international living help travelers connect authentically with local communities.</p>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-avatar avatar-consultant">🏔️</div>
+                        <h3>Lisa Park</h3>
+                        <div class="team-role">Adventure Consultant</div>
+                        <p>Specializing in extreme sports and outdoor adventures, Lisa helps thrill-seekers find their perfect adrenaline rush. Her experience in mountaineering and diving opens doors to extraordinary experiences.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>
